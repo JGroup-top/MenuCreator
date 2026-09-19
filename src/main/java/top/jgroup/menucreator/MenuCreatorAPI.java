@@ -1,6 +1,7 @@
 package top.jgroup.menucreator;
 
 import org.bukkit.plugin.Plugin;
+import top.jgroup.menucreator.menus.MenuListener;
 
 /**
  * Класс для хранения глобальной ссылки на плагин.
@@ -12,6 +13,10 @@ public class MenuCreatorAPI {
 
     public static void setPlugin(Plugin plugin) {
         MenuCreatorAPI.plugin = plugin;
+
+        plugin.getServer()
+                .getPluginManager()
+                .registerEvents(new MenuListener(), plugin);
     }
 
     public static Plugin getPlugin() {
